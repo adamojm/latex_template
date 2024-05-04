@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{amsmath} % for mathematical equations
+\usepackage{amssymb} % for blackboard bold font
+\usepackage{graphicx} % for rotating elements
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\usepackage{anyfontsize}
+% Ce code LateX a été conçu avec passion par le Dr. Adam JOUAMAA.
+% Pour être franc, c'est de ce site que provient mon inspiration...
+% https://latexdraw.com/tikz-cover-pages-gallery/
+% Commandes personnalisées pour le titre, le sous-titre, le nom de l'auteur, les équations et la date de mise à jour
+\newcommand{\ReportTitle}{Suites numériques} % Le titre
+\newcommand{\ReportSubtitle}{2ème année BAC PC-SVT} % Sous titre
+\newcommand{\AuthorName}{Dr/Prof. Adam JOUAMAA} % Nom & Prénom
+\newcommand{\UpdateDate}{03/05/2024} % MISE A JOUR
+% Don't touch ! :)
+\begin{document}
+\pagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+\fill[blue] (current page.south west) rectangle (current page.north east);
+\foreach \i in {100,95,...,5}{
+    \node[fill=blue!\i,draw=none,diamond, minimum size=\i cm,thick] at (current page.center){};
+}
+\node[align=center,black,minimum width=0.625*\paperwidth,minimum height=3cm, rounded corners] at ($(current page.north)+(0,-14)$)
+{
+    {\fontsize{45}{50} \selectfont \bfseries \ReportTitle}
+};
+\node[align=center,black,minimum width=0.625*\paperwidth,minimum height=2cm, rounded corners] at ($(current page.center)+(0,-8)$)
+{
+    {\fontsize{25}{25} \bfseries \ReportSubtitle}
+};
+\node[align=center,black,minimum width=0.625*\paperwidth,minimum height=2cm, rounded corners] at ($(current page.center)+(0,-10)$)
+{
+    {\large \bfseries \AuthorName}
+};
+\node[align=center,black!70,minimum width=0.625*\paperwidth,minimum height=3cm, rounded corners] at ($(current page.center)+(0,-5.2)$)
+{
+\rotatebox{10}{\fontsize{20}{20} \bfseries{$v_{p}+v_{p+1}+\cdots+v_{n}=v_{p} \times \frac{1-q^{n-p+1}}{1-q}$}}
+};
+\node[align=center,black!70,minimum width=0.625*\paperwidth,minimum height=3cm, rounded corners] at ($(current page.center)+(0,-4)$)
+{
+\rotatebox{18}{\fontsize{20}{20}\bfseries $\forall n \in \mathbb{N}$, $v_{n+1}=v_{n} \times q$}
+};
+\draw[blue!65,line width=2pt] ($(current page.north west)+(4cm,-21cm)$) -- ($(current page.north east)+(-4cm,-21cm)$);
+\draw[blue!65,line width=2pt] ($(current page.north west)+(4cm,-23cm)$) -- ($(current page.north east)+(-4cm,-23cm)$);
+\node[align=center,rounded corners,fill=blue!65,text=white,rectangle, minimum width=25cm, minimum height=1.5cm,inner sep=0,ultra thick] at ($(current page.center)+(0,7cm)$) {\LARGE \bfseries Mise à jour : \UpdateDate};
+
+\end{tikzpicture}
+
+\end{document}
